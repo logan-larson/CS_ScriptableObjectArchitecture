@@ -1,6 +1,6 @@
 {
   "name": "dev.caffeinatedstudios.cs_scriptableobjectarchitecture",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "CS Scriptable Object Architecture",
   "description": "A ScriptableObject-based architecture for Unity projects focused on decoupling scripts",
   "unity": "2021.1",

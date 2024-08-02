@@ -1,26 +1,20 @@
 using System;
-using UnityEngine;
 
 namespace CaffeinatedStudios.ScriptableObjectArchitecture
 {
-
     [Serializable]
-    public class StringReference
+    public class FloatReference : ReadOnlyFloatReference
     {
-        public bool UseConstant = true;
-        public string ConstantValue;
-        public StringVariable Variable;
-
-        public StringReference()
+        public FloatReference()
         { }
 
-        public StringReference(string value)
+        public FloatReference(float value)
         {
             UseConstant = true;
             ConstantValue = value;
         }
 
-        public string Value
+        public new float Value
         {
             get { return UseConstant ? ConstantValue : Variable.Value; }
             set
@@ -28,14 +22,13 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
                 if (UseConstant)
                     ConstantValue = value;
                 else
-                    Variable.SetValue(value);
+                    Variable.Value = value;
             }
         }
 
-        public static implicit operator string(StringReference reference)
+        public static implicit operator float(FloatReference reference)
         {
             return reference.Value;
         }
-
     }
 }

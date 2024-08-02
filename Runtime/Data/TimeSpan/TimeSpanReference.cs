@@ -3,22 +3,18 @@ using System;
 namespace CaffeinatedStudios.ScriptableObjectArchitecture
 {
     [Serializable]
-    public class BoolReference
+    public class TimeSpanReference : ReadOnlyTimeSpanReference
     {
-        public bool UseConstant = true;
-        public bool ConstantValue;
-        public BoolVariable Variable;
-
-        public BoolReference()
+        public TimeSpanReference()
         { }
 
-        public BoolReference(bool value)
+        public TimeSpanReference(TimeSpan value)
         {
             UseConstant = true;
             ConstantValue = value;
         }
 
-        public bool Value
+        public new TimeSpan Value
         {
             get { return UseConstant ? ConstantValue : Variable.Value; }
             set
@@ -26,14 +22,13 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
                 if (UseConstant)
                     ConstantValue = value;
                 else
-                    Variable.Value = value;
+                    Variable.SetValue(value);
             }
         }
 
-        public static implicit operator bool(BoolReference reference)
+        public static implicit operator TimeSpan(TimeSpanReference reference)
         {
             return reference.Value;
         }
-
     }
 }

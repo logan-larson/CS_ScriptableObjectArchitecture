@@ -5,16 +5,16 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
 {
 
     [Serializable]
-    public class IntReference
+    public class ReadOnlyIntReference
     {
         public bool UseConstant = true;
         public int ConstantValue;
         public IntVariable Variable;
 
-        public IntReference()
+        public ReadOnlyIntReference()
         { }
 
-        public IntReference(int value)
+        public ReadOnlyIntReference(int value)
         {
             UseConstant = true;
             ConstantValue = value;
@@ -25,7 +25,7 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
             get { return UseConstant ? ConstantValue : Variable.Value; }
         }
 
-        public static implicit operator int(IntReference reference)
+        public static implicit operator int(ReadOnlyIntReference reference)
         {
             return reference.Value;
         }

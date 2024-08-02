@@ -5,16 +5,16 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
 {
 
     [Serializable]
-    public class FloatReference
+    public class ReadOnlyFloatReference
     {
         public bool UseConstant = true;
         public float ConstantValue;
         public FloatVariable Variable;
 
-        public FloatReference()
+        public ReadOnlyFloatReference()
         { }
 
-        public FloatReference(float value)
+        public ReadOnlyFloatReference(float value)
         {
             UseConstant = true;
             ConstantValue = value;
@@ -25,9 +25,10 @@ namespace CaffeinatedStudios.ScriptableObjectArchitecture
             get { return UseConstant ? ConstantValue : Variable.Value; }
         }
 
-        public static implicit operator float(FloatReference reference)
+        public static implicit operator float(ReadOnlyFloatReference reference)
         {
             return reference.Value;
         }
+
     }
 }
